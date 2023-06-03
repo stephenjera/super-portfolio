@@ -15,13 +15,13 @@ const TableauReport: React.FC<TableauReportProps> = ({ reportId }) => {
     const resizeReport = () => {
       if (divElement!.offsetWidth > 800) {
         vizElement!.style.width = '100%'
-        vizElement!.style.height = window.innerHeight + 'px' //`${divElement!.offsetWidth * 0.75}px`
+        vizElement!.style.height = `${divElement!.offsetWidth * 0.95}px`
       } else if (divElement!.offsetWidth > 500) {
         vizElement!.style.width = '100%'
-        vizElement!.style.height = window.innerHeight + 'px' //`${divElement!.offsetWidth * 0.75}px`
+        vizElement!.style.height = `${divElement!.offsetWidth * 0.95}px`
       } else {
         vizElement!.style.width = '100%'
-        vizElement!.style.height = '927px'
+        vizElement!.style.height = '95%'
       }
     }
 

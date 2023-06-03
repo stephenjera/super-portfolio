@@ -16,23 +16,52 @@ export default function RootLayout ({
 }) {
   return (
     <html lang='en'>
-      <body className={inter.className}>
-      <nav className="bg-gray-800 p-4 text-white">
-          <ul className="flex space-x-4">
+      <body className={`${inter.className} flex flex-col h-screen`}>
+        <nav className='bg-gray-800 p-4 text-white'>
+          <ul className='flex space-x-4'>
             <li>
-              <Link href='/' className="hover:bg-gray-700 px-3 py-1 rounded-md">
+              <Link href='/' className='hover:bg-gray-700 px-3 py-1 rounded-md'>
                 Home
               </Link>
             </li>
             <li>
-              <Link href='/graphiql' className="hover:bg-gray-700 px-3 py-1 rounded-md">
+              <Link
+                href='/dashboard'
+                className='hover:bg-gray-700 px-3 py-1 rounded-md'
+              >
+                Dashboard
+              </Link>
+            </li>
+            <li>
+              <Link
+                href='/graphiql'
+                className='hover:bg-gray-700 px-3 py-1 rounded-md'
+              >
                 GraphQL API
+              </Link>
+            </li>
+            <li>
+              <Link
+                href='/database-erd'
+                className='hover:bg-gray-700 px-3 py-1 rounded-md'
+              >
+                Database ERD
+              </Link>
+            </li>
+            <li>
+              <Link
+                href='/warehouse-erd'
+                className='hover:bg-gray-700 px-3 py-1 rounded-md'
+              >
+                Warehouse ERD
               </Link>
             </li>
           </ul>
         </nav>
-        <main className="p-4">{children}</main>
-        <footer className="bg-gray-800 p-4 text-white mt-auto">My Footer</footer>
+        <main className='p-4 flex-grow '>{children}</main>
+        <footer className='bg-gray-800 p-4 text-white mt-auto'>
+          <p className='text-center'>Made by Stephen Jeranyama</p>
+        </footer>
       </body>
     </html>
   )
