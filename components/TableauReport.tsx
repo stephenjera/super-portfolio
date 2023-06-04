@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react'
 import Image from 'next/image'
 
-interface TableauReportProps {
+type TableauReportProps = {
   reportId: string
 }
 
@@ -15,13 +15,13 @@ const TableauReport: React.FC<TableauReportProps> = ({ reportId }) => {
     const resizeReport = () => {
       if (divElement!.offsetWidth > 800) {
         vizElement!.style.width = '100%'
-        vizElement!.style.height = `${divElement!.offsetWidth * 0.95}px`
+        vizElement!.style.height = `${divElement!.offsetWidth * 0.75}px`
       } else if (divElement!.offsetWidth > 500) {
         vizElement!.style.width = '100%'
-        vizElement!.style.height = `${divElement!.offsetWidth * 0.95}px`
+        vizElement!.style.height = `${divElement!.offsetWidth * 0.75}px`
       } else {
         vizElement!.style.width = '100%'
-        vizElement!.style.height = '95%'
+        vizElement!.style.height = '100%'
       }
     }
 

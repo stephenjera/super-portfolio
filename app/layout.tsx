@@ -18,16 +18,27 @@ export default function RootLayout ({
     <html lang='en'>
       <body className={`${inter.className} flex flex-col h-screen`}>
         <nav className='bg-gray-800 p-4 text-white'>
-          <ul className='flex space-x-4'>
+          <ul className='flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4'>
             <li>
-              <Link href='/' className='hover:bg-gray-700 px-3 py-1 rounded-md'>
+              <Link
+                href='/'
+                className='hover:bg-gray-700 px-3 py-1 rounded-md block text-center'
+              >
                 Home
               </Link>
             </li>
             <li>
               <Link
+                href='/scoreboard'
+                className='hover:bg-gray-700 px-3 py-1 rounded-md block text-center'
+              >
+                Scoreboard
+              </Link>
+            </li>
+            <li>
+              <Link
                 href='/dashboard'
-                className='hover:bg-gray-700 px-3 py-1 rounded-md'
+                className='hover:bg-gray-700 px-3 py-1 rounded-md block text-center'
               >
                 Dashboard
               </Link>
@@ -35,7 +46,7 @@ export default function RootLayout ({
             <li>
               <Link
                 href='/graphiql'
-                className='hover:bg-gray-700 px-3 py-1 rounded-md'
+                className='hover:bg-gray-700 px-3 py-1 rounded-md block text-center'
               >
                 GraphQL API
               </Link>
@@ -43,7 +54,7 @@ export default function RootLayout ({
             <li>
               <Link
                 href='/database-erd'
-                className='hover:bg-gray-700 px-3 py-1 rounded-md'
+                className='hover:bg-gray-700 px-3 py-1 rounded-md block text-center'
               >
                 Database ERD
               </Link>
@@ -51,13 +62,14 @@ export default function RootLayout ({
             <li>
               <Link
                 href='/warehouse-erd'
-                className='hover:bg-gray-700 px-3 py-1 rounded-md'
+                className='hover:bg-gray-700 px-3 py-1 rounded-md block text-center'
               >
                 Warehouse ERD
               </Link>
             </li>
           </ul>
         </nav>
+
         <main className='p-4 flex-grow '>{children}</main>
         <footer className='bg-gray-800 p-4 text-white mt-auto'>
           <p className='text-center'>Made by Stephen Jeranyama</p>

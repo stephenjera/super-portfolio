@@ -1,18 +1,13 @@
-import React from 'react'
-import Image from 'next/image'
+import DisplayErd from '@/components/DisplayErd'
 
-const Home: React.FC = () => {
-  return (
-    <div className='w-full h-full relative '>
-      <h1 className='text-2xl font-bold mb-4 text-center'>Data Warehouse ERD</h1>
-      <Image
-        src='/images/football_warehouse.svg'
-        alt='My Image'
-        layout='fill'
-        objectFit='contain'
-      />
-    </div>
+const WarehouseErd: React.FC = () =>{
+  return(
+    <DisplayErd
+    image_url='/images/football_warehouse.svg'
+    title='Data Warehouse ERD'
+    alt='Data Warehouse ERD'
+    />
   )
 }
 
-export default Home
+export default WarehouseErd

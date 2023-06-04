@@ -1,7 +1,7 @@
 import React from 'react';
 import TableauReport from '@/components/TableauReport';
 
-const Home: React.FC = () => {
+const Dashboard: React.FC = () => {
   return (
     <div>
       <TableauReport reportId="viz1684652351781" />
@@ -9,4 +9,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default Dashboard;
