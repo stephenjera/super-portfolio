@@ -50,6 +50,7 @@ const TableauReport: React.FC<TableauReportProps> = ({ reportId }) => {
             alt='Football Dashboard'
             src='https://public.tableau.com/static/images/An/AnalysingFootballData/Dashboard1/1_rss.png'
             style={{ border: 'none' }}
+            width={600}
           />
         </a>
       </noscript>
