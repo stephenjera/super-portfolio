@@ -1,11 +1,13 @@
 'use client'
-import React, { useState, useEffect} from 'react'
-import { request, gql } from 'graphql-request'
+import { ApolloClient, InMemoryCache, gql, useQuery } from '@apollo/client'
+
+// initialize a GraphQL client
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  uri: 'https://graphql-land.nw.r.appspot.com/graphql'
+})
 
 type Match = {
-  homeTeam: {
-    club: string
-  }
   awayScore: number
   homeScore: number
   venue: {
@@ -14,69 +16,70 @@ type Match = {
   awayTeam: {
     club: string
   }
+  homeTeam: {
+    club: string
+  }
   matchId: number
 }
 
-type ScoreboardProps = {
+type Scoreboard = {
   matches: Match[]
 }
 
-const Scoreboard: React.FC = () => {
-    const [matches, setMatches] = useState<Match[]>([])
-    const [loading, setLoading] = useState(true)
-  
-    useEffect(() => {
-      const fetchMatches = async () => {
-        const query = gql`
-          query MyQuery {
-            matches {
-              homeTeam {
-                club
-              }
-              awayScore
-              homeScore
-              venue {
-                venue
-              }
-              awayTeam {
-                club
-              }
-              matchId
-            }
-          }
-        `
-        const data: ScoreboardProps = await request(
-          'https://graphql-land.nw.r.appspot.com/graphql',
-          query
-        )
-        setMatches(data.matches)
-        setLoading(false)
+const MATCHES_QUERY = gql`
+  query MyQuery {
+    matches {
+      awayScore
+      homeScore
+      venue {
+        venue
       }
-  
-      fetchMatches()
-    }, [])
-  
-    if (loading) {
-      return <p>Loading data...</p>
+      awayTeam {
+        club
+      }
+      homeTeam {
+        club
+      }
+      matchId
     }
-  
-    return (
-        <table className="w-full h-full flex flex-col items-center text-left table-auto">
+  }
+`
+
+export default function Page () {
+  const { data, loading, error } = useQuery<Scoreboard>(MATCHES_QUERY, {
+    client
+  })
+
+  if (loading || error) {
+    return <p>{error ? error.message : 'Loading...'}</p>
+  }
+
+  console.log(data)
+
+  return (
+    <div className='overflow-x-auto'>
+      <table className='w-full text-left table-auto'>
+        <thead className='bg-gray-800 text-white'>
+          <tr>
+            <th className='border px-4 py-2'>Home Team</th>
+            <th className='border px-4 py-2'>Home Score</th>
+            <th className='border px-4 py-2'>Away Score</th>
+            <th className='border px-4 py-2'>Away Team</th>
+            <th className='border px-4 py-2'>Venue</th>
+          </tr>
+        </thead>
         <tbody>
-          {matches.map(match => (
+          {data?.matches.map(match => (
             <tr key={match.matchId}>
-              <td className="border px-4 py-2">{match.homeTeam.club}</td>
-              <td className="border px-4 py-2 text-center">{match.homeScore}</td>
-              <td className="border px-4 py-2 text-center">{match.awayScore}</td>
-              <td className="border px-4 py-2">{match.awayTeam.club}</td>
-              <td className="border px-4 py-2">{match.venue.venue}</td>
+              <td className='border px-4 py-2'>{match.homeTeam.club}</td>
+              <td className='border px-4 py-2'>{match.homeScore}</td>
+              <td className='border px-4 py-2'>{match.awayScore}</td>
+              <td className='border px-4 py-2'>{match.awayTeam.club}</td>
+              <td className='border px-4 py-2'>{match.venue.venue}</td>
             </tr>
           ))}
         </tbody>
       </table>
-      
-    )
-  }
-  
-
-export default Scoreboard
+    </div>
+  )
+}

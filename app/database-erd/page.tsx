@@ -1,6 +1,6 @@
 import DisplayErd from '@/components/DisplayErd'
 
-const DatabaseErd: React.FC = () =>{
+export default function Page(){
   return(
     <DisplayErd
     image_url='/images/football_database.svg'
@@ -9,5 +9,3 @@ const DatabaseErd: React.FC = () =>{
     />
   )
 }
-
-export default DatabaseErd

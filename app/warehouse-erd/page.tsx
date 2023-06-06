@@ -1,6 +1,6 @@
 import DisplayErd from '@/components/DisplayErd'
 
-const WarehouseErd: React.FC = () =>{
+export default function Page(){
   return(
     <DisplayErd
     image_url='/images/football_warehouse.svg'
@@ -9,5 +9,3 @@ const WarehouseErd: React.FC = () =>{
     />
   )
 }
-
-export default WarehouseErd

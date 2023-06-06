@@ -1,6 +1,13 @@
 'use client'
 import React from 'react'
-import { Icon } from '@iconify/react-with-api'
+import dynamic from 'next/dynamic'
+
+const Icon = dynamic(
+  () => import('@iconify/react-with-api').then(mod => mod.Icon),
+  {
+    ssr: false
+  }
+)
 
 const technologies = [
   {
@@ -54,18 +61,18 @@ const technologies = [
     url: 'https://www.tableau.com'
   },
   {
-    name: 'dbt',
-    icon: 'logos:dbt',
-    url: 'https://www.getdbt.com/'
+    name: 'html',
+    icon: 'devicon:html5',
+    url: 'https://html5.org/'
   },
   {
     name: 'GitHub',
     icon: 'raphael:github',
     url: 'https://github.com/stephenjera'
-  },
+  }
 ]
 
-const HomePage: React.FC = () => {
+export default function Page() {
   return (
     <div className='p-4'>
       <h1 className='text-2xl font-bold mb-4 text-center'>Technologies Used</h1>
@@ -80,14 +87,18 @@ const HomePage: React.FC = () => {
         ))}
       </ul>
       <div className='mt-8 p-4 bg-gray-700 rounded-md shadow-md'>
-        <h2 className='text-lg font-bold mb-2 text-center'>About this project</h2>
-        <p className='text-center'>This project showcases the technologies used to build a modern web application. I
-          wanted to learn new technologies and challenge myself to create something engaging and
-          useful. By using React, TypeScript, and Tailwind CSS, I was able to build a responsive
-          and user-friendly interface that makes it easy to explore and interact with the data.</p>
+        <h2 className='text-lg font-bold mb-2 text-center'>
+          About this project
+        </h2>
+        <p className='text-center'>
+          This project showcases the technologies used to build a modern web
+          application. I wanted to learn new technologies and challenge myself
+          to create something engaging and useful. By using React, TypeScript,
+          and Tailwind CSS, I was able to build a responsive and user-friendly
+          interface that makes it easy to explore and interact with the data.
+        </p>
       </div>
     </div>
   )
 }
 
-export default HomePage
