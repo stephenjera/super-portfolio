@@ -72,7 +72,7 @@ const technologies = [
   }
 ]
 
-export default function Page() {
+export default function Page () {
   return (
     <div className='p-4'>
       <h1 className='text-2xl font-bold mb-4 text-center'>Technologies Used</h1>
@@ -91,14 +91,19 @@ export default function Page() {
           About this project
         </h2>
         <p className='text-center'>
-          This project showcases the technologies used to build a modern web
-          application. I wanted to learn new technologies and challenge myself
-          to create something engaging and useful. By using React, TypeScript,
-          and Tailwind CSS, I was able to build a responsive and user-friendly
-          interface that makes it easy to explore and interact with the data.
+          This project showcases the use of modern web technologies to build an
+          engaging and useful application. By using React, TypeScript, and
+          Tailwind CSS, I was able to create a responsive and user-friendly
+          interface that makes it easy to explore and interact with the data. On
+          the backend, I used Python and FastAPI to build an API that serves
+          data to the frontend. I also designed ERD diagrams for the database
+          and dashboard and used cloud technologies such as Google App Engine
+          for production deployments. Other technologies used in this project
+          include GraphQL, BigQuery, Next.js, Tableau, HTML5, and GitHub. This
+          project was a great opportunity for me to learn new technologies and
+          challenge myself to create something engaging and useful.
         </p>
       </div>
     </div>
   )
 }
-

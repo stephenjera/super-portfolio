@@ -1,5 +1,4 @@
 'use client'
-
 export default function Page () {
   const iframeSrc = 'https://graphql-land.nw.r.appspot.com/graphql'
   let smallScreen
@@ -10,12 +9,17 @@ export default function Page () {
 
   if (smallScreen && smallScreen.matches) {
     return (
-      <div>
-        <p>
+      <div className='p-4 text-center'>
+        <p className='text-lg mb-2'>
           The screen is too small to display the content. Please click the link
           below to open it in a new tab.
         </p>
-        <a href={iframeSrc} target='_blank' rel='noopener noreferrer'>
+        <a
+          href={iframeSrc}
+          target='_blank'
+          rel='noopener noreferrer'
+          className='text-blue-500 underline'
+        >
           Open in new tab
         </a>
       </div>

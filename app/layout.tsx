@@ -24,7 +24,7 @@ export default function RootLayout ({
 
   return (
     <html lang='en'>
-       <Head>
+      <Head>
         <title>Football Project</title>
       </Head>
       <body className={`${inter.className} flex flex-col h-screen`}>
